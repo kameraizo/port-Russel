@@ -28,7 +28,7 @@ app.use(session({                             // use de express-session
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));    // set de views
-app.set('view engine', 'jade');                     // set de view engine
+app.set('view engine', 'ejs');                     // set de view engine
 
 app.use(logger('dev'));                             // use de logger
 app.use(express.json());                            // use de express.json            
@@ -37,22 +37,17 @@ app.use(cookieParser());                            // use de cookieParser
 app.use(express.static(path.join(__dirname, 'public')));    // use de express.static
 
 app.use('/', indexRouter);                          // use de index
-
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {                  // route de 404       
-  next(createError(404));                           // laisse passer
+app.use(function(req, res, next) {                  // use de function
+  next(createError(404));                           // next de createError
 });
 
-// error handler
-app.use(function(err, req, res, next) {              // route d'erreur
-  // set locals, only providing error in development
-  res.locals.message = err.message;                   // message
-  res.locals.error = req.app.get('env') === 'development' ? err : {};            // erreur
 
-  // render the error page
-  res.status(err.status || 500);                      // status
-  res.render('error');                                // render
+app.use(function(err, req, res, next) {              // route d'erreur
+  res.status(err.status || 500)                   // status
+  res.render('error', {                            // render
+    message: err.message,                          // message
+    status: err.status || 500                              // status
+  });                                                   
 });
 //export
 module.exports = app;
