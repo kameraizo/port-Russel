@@ -8,7 +8,7 @@ const reservation = require('../models/reservation')
 const jwt = require('jsonwebtoken')
 const Catway = require('../models/catways')
 const Reservations = require('../models/reservation')
-const Users = require('../models/user')
+const Users = require('../models/user');
 
 router.use('/users', usersRouter)    // use des routes
 router.use('/catways', catwaysRouter)    
@@ -60,6 +60,7 @@ router.get('/dashboard', async function(req, res){
 
   res.render('dashboard', { 
     email: decoded.email,
+    username: decoded.username,
     reservations: reservations
   })
 })

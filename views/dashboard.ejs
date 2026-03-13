@@ -13,12 +13,13 @@
             <a href="/users-page" class="btn btn-outline-light btn-sm me-2">Utilisateurs</a>
             <a href="/reservations-page" class="btn btn-outline-light btn-sm me-2">Reservations</a>
             <a href="/users/logout" class="btn btn-outline-light btn-sm">Déconnexion</a>
+            <a href="https://github.com/kameraizo/port-Russel#readme" target="_blank" class="btn btn-outline-light btn-sm me-2">Documentation</a>
         </div>
     </nav>
 
     <div class="container mt-4">
         <h2>Tableau de bord</h2>
-        <p class="text-muted">Connecté en tant que : <strong><%= email %></strong></p>
+        <p class="text-muted">Connecté en tant que : <strong><%= username %></strong></p>
         <p class="text-muted">Date du jour : <strong><%= new Date().toLocaleDateString() %></strong></p>
 
         <h4 class="mt-4">Reservations en cours</h4>

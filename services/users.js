@@ -37,7 +37,9 @@ const authenticate = async (email, password) => {           //fonction authentif
     if (!isValid) throw new Error('Mot de passe incorrect')        // si le mot de passe est incorrect retourne une erreur
 
     const token = jwt.sign(
-        { email: user.email },      // infos dans le token
+        { email: user.email,              // infos dans le token
+          username: user.username
+        },      
         process.env.SECRET_KEY,     // clé secrète
         { expiresIn: '24h' }        // durée de validité
     )
